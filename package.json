@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "publish": "yarn build && gh-pages -d public",
+    "styles": "tailwind build base.css -o public/styles.css",
+    "build": "yarn styles && elm make src/main.elm --optimize --output=public/elm.js",
+    "dev": "elm-live src/main.elm --hot --open --dir=./public -- --output=public/elm.js"
+  },
+  "dependencies": {
+    "tailwindcss": "^1.1.3"
+  },
+  "devDependencies": {
+    "elm-live": "^4.0.1",
+    "gh-pages": "^2.1.1"
+  }
+}
