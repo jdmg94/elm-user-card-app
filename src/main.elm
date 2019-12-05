@@ -3,10 +3,9 @@ module Main exposing (..)
 import Browser
 import Types exposing (..)
 import Styles exposing (..)
+import Html exposing (Html)
 import Html.Events exposing (onClick)
-import Html.Attributes exposing (class)
 import Tasks exposing (getRandomProfile)
-import Html exposing (Html, text, button)
 
 main = Browser.element 
   {
@@ -16,7 +15,7 @@ main = Browser.element
     subscriptions = subscriptions
   }
 
-init : () -> (Model, Cmd Msg)
+init: () -> (Model, Cmd Msg)
 init _ = (Loading, getRandomProfile)
 
 subscriptions : Model -> Sub Msg
@@ -32,7 +31,7 @@ view model = container [
       detail [
         title (profile.firstName ++ " " ++ profile.lastName),
         subtitle ("@" ++ profile.username),
-        button [ onClick AnotherOne, class "text-white rounded bg-blue-600 hover:bg-blue-400 mt-4 p-2" ] [ text "Refetch"]
+        refresh [onClick AnotherOne]
         ]
       ]
   ]

@@ -5979,6 +5979,37 @@ var author$project$Styles$onTheLeft = elm$html$Html$div(
 		[
 			elm$html$Html$Attributes$class('flex-shrink-0')
 		]));
+var elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3(elm$core$List$foldr, elm$core$List$cons, ys, xs);
+		}
+	});
+var elm$core$List$concat = function (lists) {
+	return A3(elm$core$List$foldr, elm$core$List$append, _List_Nil, lists);
+};
+var elm$html$Html$button = _VirtualDom_node('button');
+var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
+var author$project$Styles$refresh = function (events) {
+	return A2(
+		elm$html$Html$button,
+		elm$core$List$concat(
+			_List_fromArray(
+				[
+					_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('text-white rounded bg-blue-600 hover:bg-blue-400 mt-4 p-2')
+					]),
+					events
+				])),
+		_List_fromArray(
+			[
+				elm$html$Html$text('Refetch')
+			]));
+};
 var elm$html$Html$img = _VirtualDom_node('img');
 var elm$html$Html$Attributes$src = function (url) {
 	return A2(
@@ -5997,8 +6028,6 @@ var author$project$Styles$roundedImage = function (url) {
 		_List_Nil);
 };
 var elm$html$Html$p = _VirtualDom_node('p');
-var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
 var author$project$Styles$subtitle = function (message) {
 	return A2(
 		elm$html$Html$p,
@@ -6024,7 +6053,6 @@ var author$project$Styles$title = function (message) {
 			]));
 };
 var author$project$Types$AnotherOne = {$: 'AnotherOne'};
-var elm$html$Html$button = _VirtualDom_node('button');
 var elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -6067,16 +6095,10 @@ var author$project$Main$view = function (model) {
 										[
 											author$project$Styles$title(profile.firstName + (' ' + profile.lastName)),
 											author$project$Styles$subtitle('@' + profile.username),
-											A2(
-											elm$html$Html$button,
+											author$project$Styles$refresh(
 											_List_fromArray(
 												[
-													elm$html$Html$Events$onClick(author$project$Types$AnotherOne),
-													elm$html$Html$Attributes$class('text-white rounded bg-blue-600 hover:bg-blue-400 mt-4 p-2')
-												]),
-											_List_fromArray(
-												[
-													elm$html$Html$text('Refetch')
+													elm$html$Html$Events$onClick(author$project$Types$AnotherOne)
 												]))
 										]))
 								]));

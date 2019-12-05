@@ -1,8 +1,9 @@
 module Styles exposing (..)
 
 import Types exposing (Msg)
-import Html exposing (Html, text, img, div, p)
+import Html exposing (Html, text, img, div, p, button)
 import Html.Attributes exposing (class, style, src)
+import Html.Events
 
 title: String -> Html Msg
 title message = p [ class "text-xl"] [ text message ]
@@ -35,3 +36,5 @@ detail = div [ class "md:ml-4 flex flex-col justify-center" ]
 roundedImage: String -> Html Msg
 roundedImage url = img [ class "rounded-full m-2", src url ] []
 
+refresh: List (Html.Attribute Msg) -> Html Msg
+refresh events = button (List.concat [[ class "text-white rounded bg-blue-600 hover:bg-blue-400 mt-4 p-2" ], events]) [ text "Refetch"]
